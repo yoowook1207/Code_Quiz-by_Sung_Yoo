@@ -5,11 +5,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Taskinator</title>
+    <title>Code Quiz by Sung Yoo</title>
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-    <script src="./assets/js/script.js"></script>
+    <header>
+        <div class= "highScores">
+            <h3>
+            View high scores
+            <ul id="high-score-list">
+            </ul>
+            </h3>
+        </div>
+        <p id="timer">
+            
+        </p>
+    </header>
+    <main class="page-content">
+
+        <section class= "problemQuestions" id="questions">
+        </section>
+
+        <section class= "problemQuestions" id="player-info">
+            <label for="initials">Initials</label>
+            <input type="text" name="initial" id="initial" placeholder="SWY" />
+            <button id="submit">Submit</button>
+        </section>
+
+        <section class= "answers-wrapper">
+            <div class = "start-button-wrapper">
+                <button class= "start-button" id="start-quiz"></button>
+            </div>
+            <ul class= "problemAnswers">
+                <button class= "Choices"></button>
+                <button class= "Choices"></button>
+                <button class= "Choices"></button>
+                <button class= "Choices"></button>
+            </ul>
+        </section>
+
+        <section class= "correctOrWrong">
+        </section>
+
+    </main>
+    <script src="./assets/js/script2.js"></script>
 </body>
 
 </html>
