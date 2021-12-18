@@ -165,7 +165,9 @@ let highScoreOrganized = function() {
     if (!highestScores) {
         highestScores =[]
     }
-    highestScores.sort((a,b) => b.score-a.score);
+    else {
+        highestScores.sort((a,b) => b.score-a.score);
+    }
     console.log(highestScores.length)
 
     for (i=0; i<highestScores.length; i++) {
