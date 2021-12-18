@@ -75,33 +75,32 @@ function countDown() {
     if (countdownSeconds === 0 || countdownSeconds < 0) {
         countdownEl.textContent="TIME OUT!";
         clearTimeout(countDown90)
-        displayMessage();
+        displayMessage;
       }
     }, 1000);
 }   
 
-function displayMessage() {
+let displayMessage = function () {
     answersWrapEl.classList.add("display-none")
     footerEl.classList.add("display-none")
     playerInfo.classList.remove("display-none")
     questionsEl.innerHTML = "<h1> TIME OUT!</h1> <p>Your score is" + " " + countdownSeconds +"</p> <br>"
 }
 
-    infoSubmitEl.addEventListener("click", function(event){
-        event.preventDefault();
-        let output = localStorage.getItem("HighScores")
-        let scoreBoardArray1 = JSON.parse(output)
+let scoreBoard = []
 
-        console.log(initialInput.value)
-        scoreBoardArray1.push(
-            {
-                initial: initialInput.value,
-                score: countdownSeconds
-            }
-        )
-        
-        localStorage.setItem("HighScores", JSON.stringify(scoreBoardArray1))
-    });
+infoSubmitEl.addEventListener("click", function(event){
+    event.preventDefault();
+    console.log(initialInput.value)
+    scoreBoard.push(
+        {
+            initial: initialInput.value,
+            score: countdownSeconds
+        }
+    )
+    
+    localStorage.setItem("HighScores", JSON.stringify(scoreBoard))
+});
 
 
 function quizMaker(quizNumber) {
@@ -163,6 +162,9 @@ function firstPage() {
 let highScoreOrganized = function() {
     let output1 = localStorage.getItem("HighScores")
     let highestScores = JSON.parse(output1)
+    if (!highestScores) {
+        highestScores =[]
+    }
     highestScores.sort((a,b) => b.score-a.score);
     console.log(highestScores.length)
 
