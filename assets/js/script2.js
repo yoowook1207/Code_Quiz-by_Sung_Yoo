@@ -65,22 +65,24 @@ let highScoreList = document.getElementById("high-score-list")
 let countdownSeconds = 90;
 let quizNumber = 0;
 
-function countDown() {
-    let countDown90 = setInterval(function(){
+// function countDown() {
+//     let countDown90 = setInterval(function(){
 
-    countdownEl.innerHTML = countdownSeconds;
-    countdownSeconds--;
-    countdownEl.textContent= countdownSeconds + " seconds remaining";
+//     countdownEl.innerHTML = countdownSeconds;
+//     countdownSeconds--;
+//     countdownEl.textContent= countdownSeconds + " seconds remaining";
 
-    if (countdownSeconds === 0 || countdownSeconds < 0) {
-        countdownEl.textContent="TIME OUT!";
-        clearTimeout(countDown90)
-        displayMessage;
-      }
-    }, 1000);
-}   
+//     if (countdownSeconds === 0 || countdownSeconds < 0) {
+//         countdownEl.textContent="TIME OUT!";
+//         clearTimeout(countDown90)
+//         displayMessage;
+//         }
+//     }, 1000);
+    
+// }   
 
 let displayMessage = function () {
+    
     answersWrapEl.classList.add("display-none")
     footerEl.classList.add("display-none")
     playerInfo.classList.remove("display-none")
@@ -168,12 +170,31 @@ let highScoreOrganized = function() {
     else {
         highestScores.sort((a,b) => b.score-a.score);
     }
-    console.log(highestScores.length)
 
     for (i=0; i<highestScores.length; i++) {
         highScoreList.innerHTML+="<li>" + highestScores[i].initial + " / " + highestScores[i].score + "</li>" 
     }
 }
+
+function countDown() {
+    let countDown90 = setInterval(function(){
+
+    countdownEl.innerHTML = countdownSeconds;
+    countdownSeconds--;
+    countdownEl.textContent= countdownSeconds + " seconds remaining";
+
+    if (countdownSeconds === 0 || countdownSeconds < 0 ) {
+        countdownEl.textContent="TIME OUT!";
+        clearTimeout(countDown90)
+        displayMessage;
+        }
+        else if (quizNumber===quizData.length) {
+        countdownEl.textContent="QUIZ FINISHED!";
+        clearTimeout(countDown90)
+        }
+    }, 1000);
+    
+}   
 
 firstPage()
 //done
